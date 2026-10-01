@@ -1,0 +1,11 @@
+import { Router } from "express";
+import * as c from "../controllers/task.controller";
+import { authMiddleware } from "../middleware/auth.middleware";
+const router = Router();
+router.use(authMiddleware);
+router.post("/", c.create);
+router.get("/", c.list);
+router.get("/:id", c.get);
+router.put("/:id", c.update);
+router.delete("/:id", c.remove);
+export default router;
